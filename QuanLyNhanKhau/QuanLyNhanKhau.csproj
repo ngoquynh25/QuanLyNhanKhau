@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{82293298-E7E1-4F5C-B3C6-78A368F023DF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QuanLyNhanKhau</RootNamespace>
+    <AssemblyName>QuanLyNhanKhau</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.BonusSkins.v20.1" />
+    <Reference Include="DevExpress.Data.Desktop.v20.1" />
+    <Reference Include="DevExpress.Data.v20.1" />
+    <Reference Include="DevExpress.Printing.v20.1.Core" />
+    <Reference Include="DevExpress.Utils.v20.1" />
+    <Reference Include="DevExpress.XtraBars.v20.1" />
+    <Reference Include="DevExpress.Sparkline.v20.1.Core" />
+    <Reference Include="DevExpress.XtraEditors.v20.1" />
+    <Reference Include="DevExpress.XtraGrid.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v20.1, Version=20.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BangChuHo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BangChuHo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BangCSKV.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BangCSKV.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BangHoGiaDinh.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BangHoGiaDinh.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BangKhuPho.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BangKhuPho.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BangPhuong.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BangPhuong.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BangQuan.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BangQuan.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BangToTruong.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BangToTruong.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ChuHoData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChuHoData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataCSKV.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataCSKV.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataHoGiaDinh.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataHoGiaDinh.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIN.Designer.cs">
+      <DependentUpon>frmIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Phuong_Xa.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Phuong_Xa.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TTTDPDTO.cs">
+      <DependentUpon>TTTDPDTO.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TTTDPDTO.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TTTDPDTO.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UCChuHo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UCChuHo.Designer.cs">
+      <DependentUpon>UCChuHo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UCCSKV.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UCCSKV.Designer.cs">
+      <DependentUpon>UCCSKV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UCHoGiaDinh.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UCHoGiaDinh.Designer.cs">
+      <DependentUpon>UCHoGiaDinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UCKhuPho.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UCKhuPho.Designer.cs">
+      <DependentUpon>UCKhuPho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UCPhuongXa.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UCPhuongXa.Designer.cs">
+      <DependentUpon>UCPhuongXa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UCQuan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UCQuan.Designer.cs">
+      <DependentUpon>UCQuan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UCToTruong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UCToTruong.Designer.cs">
+      <DependentUpon>UCToTruong.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BangChuHo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BangChuHo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BangCSKV.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BangCSKV.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BangHoGiaDinh.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BangHoGiaDinh.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BangKhuPho.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BangKhuPho.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BangPhuong.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BangPhuong.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BangQuan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BangQuan.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BangToTruong.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BangToTruong.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmIN.resx">
+      <DependentUpon>frmIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\UCChuHo.resx">
+      <DependentUpon>UCChuHo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UCCSKV.resx">
+      <DependentUpon>UCCSKV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UCHoGiaDinh.resx">
+      <DependentUpon>UCHoGiaDinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UCKhuPho.resx">
+      <DependentUpon>UCKhuPho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UCPhuongXa.resx">
+      <DependentUpon>UCPhuongXa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UCQuan.resx">
+      <DependentUpon>UCQuan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UCToTruong.resx">
+      <DependentUpon>UCToTruong.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="ChuHoData.xsc">
+      <DependentUpon>ChuHoData.xsd</DependentUpon>
+    </None>
+    <None Include="ChuHoData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ChuHoData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ChuHoData.xss">
+      <DependentUpon>ChuHoData.xsd</DependentUpon>
+    </None>
+    <None Include="DataCSKV.xsc">
+      <DependentUpon>DataCSKV.xsd</DependentUpon>
+    </None>
+    <None Include="DataCSKV.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataCSKV.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataCSKV.xss">
+      <DependentUpon>DataCSKV.xsd</DependentUpon>
+    </None>
+    <None Include="DataHoGiaDinh.xsc">
+      <DependentUpon>DataHoGiaDinh.xsd</DependentUpon>
+    </None>
+    <None Include="DataHoGiaDinh.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataHoGiaDinh.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataHoGiaDinh.xss">
+      <DependentUpon>DataHoGiaDinh.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Phuong_Xa.xsc">
+      <DependentUpon>Phuong_Xa.xsd</DependentUpon>
+    </None>
+    <None Include="Phuong_Xa.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Phuong_Xa.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Phuong_Xa.xss">
+      <DependentUpon>Phuong_Xa.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="TTTDPDTO.xsc">
+      <DependentUpon>TTTDPDTO.xsd</DependentUpon>
+    </None>
+    <None Include="TTTDPDTO.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TTTDPDTO.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="TTTDPDTO.xss">
+      <DependentUpon>TTTDPDTO.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
+      <Project>{5ed976df-ca15-436b-b312-40aa8b076caf}</Project>
+      <Name>BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+      <Project>{cd8e7cd0-2061-4955-9ec1-f9e3d9701b77}</Project>
+      <Name>DataLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

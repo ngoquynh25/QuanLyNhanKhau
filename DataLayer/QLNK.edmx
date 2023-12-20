@@ -1,0 +1,955 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QuanLyNhanKhauModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_CSKV">
+          <Key>
+            <PropertyRef Name="IDCSKV" />
+          </Key>
+          <Property Name="IDCSKV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDKhuPho" Type="int" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ChucVu" Type="nvarchar" MaxLength="250" />
+          <Property Name="ThongTinLienHe" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="NgayThamGiaCongTac" Type="date" />
+          <Property Name="TrangThai" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tb_ChuHo">
+          <Key>
+            <PropertyRef Name="IDChuHo" />
+          </Key>
+          <Property Name="IDChuHo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDKhuPho" Type="int" />
+          <Property Name="HoTenChuHo" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="ThongTinLienHe" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ConSong" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tb_HoGiaDinh">
+          <Key>
+            <PropertyRef Name="IDHoGiaDinh" />
+          </Key>
+          <Property Name="IDHoGiaDinh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDChuHo" Type="int" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="NgheNghiep" Type="nvarchar" MaxLength="250" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
+          <Property Name="QuanHeChuHo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ConSong" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tb_KhuPho">
+          <Key>
+            <PropertyRef Name="IDKhuPho" />
+          </Key>
+          <Property Name="IDKhuPho" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPhuongXa" Type="int" />
+          <Property Name="TenKhuPho" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="DanSo" Type="int" />
+          <Property Name="DiaChiTruSoHanhChinh" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ThongTinLienHe" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tb_PhuongXa">
+          <Key>
+            <PropertyRef Name="IDPhuongXa" />
+          </Key>
+          <Property Name="IDPhuongXa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDQuan" Type="int" />
+          <Property Name="TenPhuong" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="DanSo" Type="int" />
+          <Property Name="DienTich" Type="float" />
+          <Property Name="DiaChiTruSoHanhChinh" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ThongTinLienHe" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tb_Quan">
+          <Key>
+            <PropertyRef Name="IDQuan" />
+          </Key>
+          <Property Name="IDQuan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenQuan" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ThanhPho_Tinh" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="DanSo" Type="int" />
+          <Property Name="DienTich" Type="float" />
+          <Property Name="DiaChiKhuPhoHanhChinh" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="ThongTinLienHe" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="tb_ToTruongKhuPho">
+          <Key>
+            <PropertyRef Name="IDToTruong" />
+          </Key>
+          <Property Name="IDToTruong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDKhuPho" Type="int" />
+          <Property Name="TenToTruong" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
+          <Property Name="DiaChiCuTru" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="NgayBatDau" Type="date" />
+          <Property Name="TrangThai" Type="bit" />
+          <Property Name="ThongTinLienHe" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <Association Name="FK__tb_CSKV__IDKhuPh__44FF419A">
+          <End Role="tb_KhuPho" Type="Self.tb_KhuPho" Multiplicity="0..1" />
+          <End Role="tb_CSKV" Type="Self.tb_CSKV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_KhuPho">
+              <PropertyRef Name="IDKhuPho" />
+            </Principal>
+            <Dependent Role="tb_CSKV">
+              <PropertyRef Name="IDKhuPho" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_ChuHo__IDKhuP__48CFD27E">
+          <End Role="tb_KhuPho" Type="Self.tb_KhuPho" Multiplicity="0..1" />
+          <End Role="tb_ChuHo" Type="Self.tb_ChuHo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_KhuPho">
+              <PropertyRef Name="IDKhuPho" />
+            </Principal>
+            <Dependent Role="tb_ChuHo">
+              <PropertyRef Name="IDKhuPho" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_HoGiaD__IDChu__4CA06362">
+          <End Role="tb_ChuHo" Type="Self.tb_ChuHo" Multiplicity="0..1" />
+          <End Role="tb_HoGiaDinh" Type="Self.tb_HoGiaDinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_ChuHo">
+              <PropertyRef Name="IDChuHo" />
+            </Principal>
+            <Dependent Role="tb_HoGiaDinh">
+              <PropertyRef Name="IDChuHo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_KhuPho__IDPhu__3D5E1FD2">
+          <End Role="tb_PhuongXa" Type="Self.tb_PhuongXa" Multiplicity="0..1" />
+          <End Role="tb_KhuPho" Type="Self.tb_KhuPho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_PhuongXa">
+              <PropertyRef Name="IDPhuongXa" />
+            </Principal>
+            <Dependent Role="tb_KhuPho">
+              <PropertyRef Name="IDPhuongXa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Phuong__IDQua__398D8EEE">
+          <End Role="tb_Quan" Type="Self.tb_Quan" Multiplicity="0..1" />
+          <End Role="tb_PhuongXa" Type="Self.tb_PhuongXa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Quan">
+              <PropertyRef Name="IDQuan" />
+            </Principal>
+            <Dependent Role="tb_PhuongXa">
+              <PropertyRef Name="IDQuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_ToTruo__IDKhu__412EB0B6">
+          <End Role="tb_KhuPho" Type="Self.tb_KhuPho" Multiplicity="0..1" />
+          <End Role="tb_ToTruongKhuPho" Type="Self.tb_ToTruongKhuPho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_KhuPho">
+              <PropertyRef Name="IDKhuPho" />
+            </Principal>
+            <Dependent Role="tb_ToTruongKhuPho">
+              <PropertyRef Name="IDKhuPho" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_ChinhSuaChuHo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDChuHo" Type="int" Mode="In" />
+          <Parameter Name="IDKhuPho" Type="int" Mode="In" />
+          <Parameter Name="HoTenChuHo" Type="nvarchar" Mode="In" />
+          <Parameter Name="DiaChi" Type="nvarchar" Mode="In" />
+          <Parameter Name="ThongTinLienHe" Type="nvarchar" Mode="In" />
+          <Parameter Name="ConSong" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_ChinhSuaCSKV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDCSKV" Type="int" Mode="In" />
+          <Parameter Name="IDKhuPho" Type="int" Mode="In" />
+          <Parameter Name="HoTen" Type="nvarchar" Mode="In" />
+          <Parameter Name="ChucVu" Type="nvarchar" Mode="In" />
+          <Parameter Name="ThongTinLienHe" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgayThamGiaCongTac" Type="date" Mode="In" />
+          <Parameter Name="TrangThai" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_ChinhSuaHoGiaDinh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDHoGiaDinh" Type="int" Mode="In" />
+          <Parameter Name="IDChuHo" Type="int" Mode="In" />
+          <Parameter Name="HoTen" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgheNghiep" Type="nvarchar" Mode="In" />
+          <Parameter Name="GioiTinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="QuanHeChuHo" Type="nvarchar" Mode="In" />
+          <Parameter Name="ConSong" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_ChinhSuaKhuPho" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDKhuPho" Type="int" Mode="In" />
+          <Parameter Name="IDPhuongXa" Type="int" Mode="In" />
+          <Parameter Name="TenKhuPho" Type="nvarchar" Mode="In" />
+          <Parameter Name="DanSo" Type="int" Mode="In" />
+          <Parameter Name="DiaChiTruSoHanhChinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="ThongTinLienHe" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ChinhSuaPhuongXa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDPhuongXa" Type="int" Mode="In" />
+          <Parameter Name="IDQuan" Type="int" Mode="In" />
+          <Parameter Name="TenPhuong" Type="nvarchar" Mode="In" />
+          <Parameter Name="DanSo" Type="int" Mode="In" />
+          <Parameter Name="DienTich" Type="float" Mode="In" />
+          <Parameter Name="DiaChiTruSoHanhChinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="ThongTinLienHe" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ChinhSuaQuan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDQuan" Type="int" Mode="In" />
+          <Parameter Name="TenQuan" Type="nvarchar" Mode="In" />
+          <Parameter Name="ThanhPho_Tinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="DanSo" Type="int" Mode="In" />
+          <Parameter Name="DienTich" Type="float" Mode="In" />
+          <Parameter Name="DiaChiKhuPhoHanhChinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="ThongTinLienHe" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ChinhSuaToTruongKhuPho" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDToTruong" Type="int" Mode="In" />
+          <Parameter Name="IDKhuPho" Type="int" Mode="In" />
+          <Parameter Name="TenToTruong" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgaySinh" Type="date" Mode="In" />
+          <Parameter Name="GioiTinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="DiaChiCuTru" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgayBatDau" Type="date" Mode="In" />
+          <Parameter Name="TrangThai" Type="bit" Mode="In" />
+          <Parameter Name="ThongTinLienHe" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ThemChuHo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDKhuPho" Type="int" Mode="In" />
+          <Parameter Name="HoTenChuHo" Type="nvarchar" Mode="In" />
+          <Parameter Name="DiaChi" Type="nvarchar" Mode="In" />
+          <Parameter Name="ThongTinLienHe" Type="nvarchar" Mode="In" />
+          <Parameter Name="ConSong" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_ThemCSKV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDKhuPho" Type="int" Mode="In" />
+          <Parameter Name="HoTen" Type="nvarchar" Mode="In" />
+          <Parameter Name="ChucVu" Type="nvarchar" Mode="In" />
+          <Parameter Name="ThongTinLienHe" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgayThamGiaCongTac" Type="date" Mode="In" />
+          <Parameter Name="TrangThai" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_ThemHoGiaDinh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDChuHo" Type="int" Mode="In" />
+          <Parameter Name="HoTen" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgheNghiep" Type="nvarchar" Mode="In" />
+          <Parameter Name="GioiTinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="QuanHeChuHo" Type="nvarchar" Mode="In" />
+          <Parameter Name="ConSong" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_ThemKhuPho" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDPhuongXa" Type="int" Mode="In" />
+          <Parameter Name="TenKhuPho" Type="nvarchar" Mode="In" />
+          <Parameter Name="DanSo" Type="int" Mode="In" />
+          <Parameter Name="DiaChiTruSoHanhChinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="ThongTinLienHe" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ThemPhuongXa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDQuan" Type="int" Mode="In" />
+          <Parameter Name="TenPhuong" Type="nvarchar" Mode="In" />
+          <Parameter Name="DanSo" Type="int" Mode="In" />
+          <Parameter Name="DienTich" Type="float" Mode="In" />
+          <Parameter Name="DiaChiTruSoHanhChinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="ThongTinLienHe" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ThemQuan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TenQuan" Type="nvarchar" Mode="In" />
+          <Parameter Name="ThanhPho_Tinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="DanSo" Type="int" Mode="In" />
+          <Parameter Name="DienTich" Type="float" Mode="In" />
+          <Parameter Name="DiaChiKhuPhoHanhChinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="ThongTinLienHe" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ThemToTruongKhuPho" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDKhuPho" Type="int" Mode="In" />
+          <Parameter Name="TenToTruong" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgaySinh" Type="date" Mode="In" />
+          <Parameter Name="GioiTinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="DiaChiCuTru" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgayBatDau" Type="date" Mode="In" />
+          <Parameter Name="TrangThai" Type="bit" Mode="In" />
+          <Parameter Name="ThongTinLienHe" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_XoaChuHo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDChuHo" Type="int" Mode="In" />
+          <Parameter Name="IsDelete" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_XoaCSKV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDCSKV" Type="int" Mode="In" />
+          <Parameter Name="IsDelete" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_XoaHoGiaDinh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDHoGiaDinh" Type="int" Mode="In" />
+          <Parameter Name="IsDelete" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_XoaKhuPho" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDKhuPho" Type="int" Mode="In" />
+          <Parameter Name="IsDelete" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_XoaPhuongXa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDPhuongXa" Type="int" Mode="In" />
+          <Parameter Name="IsDelete" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_XoaQuan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDQuan" Type="int" Mode="In" />
+          <Parameter Name="IsDelete" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_XoaToTruongKhuPho" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDToTruong" Type="int" Mode="In" />
+          <Parameter Name="IsDelete" Type="bit" Mode="In" />
+        </Function>
+        <EntityContainer Name="QuanLyNhanKhauModelStoreContainer">
+          <EntitySet Name="tb_CSKV" EntityType="Self.tb_CSKV" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_ChuHo" EntityType="Self.tb_ChuHo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_HoGiaDinh" EntityType="Self.tb_HoGiaDinh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_KhuPho" EntityType="Self.tb_KhuPho" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_PhuongXa" EntityType="Self.tb_PhuongXa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Quan" EntityType="Self.tb_Quan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_ToTruongKhuPho" EntityType="Self.tb_ToTruongKhuPho" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tb_CSKV__IDKhuPh__44FF419A" Association="Self.FK__tb_CSKV__IDKhuPh__44FF419A">
+            <End Role="tb_KhuPho" EntitySet="tb_KhuPho" />
+            <End Role="tb_CSKV" EntitySet="tb_CSKV" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_ChuHo__IDKhuP__48CFD27E" Association="Self.FK__tb_ChuHo__IDKhuP__48CFD27E">
+            <End Role="tb_KhuPho" EntitySet="tb_KhuPho" />
+            <End Role="tb_ChuHo" EntitySet="tb_ChuHo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_HoGiaD__IDChu__4CA06362" Association="Self.FK__tb_HoGiaD__IDChu__4CA06362">
+            <End Role="tb_ChuHo" EntitySet="tb_ChuHo" />
+            <End Role="tb_HoGiaDinh" EntitySet="tb_HoGiaDinh" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_KhuPho__IDPhu__3D5E1FD2" Association="Self.FK__tb_KhuPho__IDPhu__3D5E1FD2">
+            <End Role="tb_PhuongXa" EntitySet="tb_PhuongXa" />
+            <End Role="tb_KhuPho" EntitySet="tb_KhuPho" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Phuong__IDQua__398D8EEE" Association="Self.FK__tb_Phuong__IDQua__398D8EEE">
+            <End Role="tb_Quan" EntitySet="tb_Quan" />
+            <End Role="tb_PhuongXa" EntitySet="tb_PhuongXa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_ToTruo__IDKhu__412EB0B6" Association="Self.FK__tb_ToTruo__IDKhu__412EB0B6">
+            <End Role="tb_KhuPho" EntitySet="tb_KhuPho" />
+            <End Role="tb_ToTruongKhuPho" EntitySet="tb_ToTruongKhuPho" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QuanLyNhanKhauModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tb_CSKV">
+          <Key>
+            <PropertyRef Name="IDCSKV" />
+          </Key>
+          <Property Name="IDCSKV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDKhuPho" Type="Int32" />
+          <Property Name="HoTen" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ChucVu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ThongTinLienHe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgayThamGiaCongTac" Type="DateTime" Precision="0" />
+          <Property Name="TrangThai" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="tb_KhuPho" Relationship="Self.FK__tb_CSKV__IDKhuPh__44FF419A" FromRole="tb_CSKV" ToRole="tb_KhuPho" />
+        </EntityType>
+        <EntityType Name="tb_ChuHo">
+          <Key>
+            <PropertyRef Name="IDChuHo" />
+          </Key>
+          <Property Name="IDChuHo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDKhuPho" Type="Int32" />
+          <Property Name="HoTenChuHo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ThongTinLienHe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ConSong" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="tb_KhuPho" Relationship="Self.FK__tb_ChuHo__IDKhuP__48CFD27E" FromRole="tb_ChuHo" ToRole="tb_KhuPho" />
+          <NavigationProperty Name="tb_HoGiaDinh" Relationship="Self.FK__tb_HoGiaD__IDChu__4CA06362" FromRole="tb_ChuHo" ToRole="tb_HoGiaDinh" />
+        </EntityType>
+        <EntityType Name="tb_HoGiaDinh">
+          <Key>
+            <PropertyRef Name="IDHoGiaDinh" />
+          </Key>
+          <Property Name="IDHoGiaDinh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDChuHo" Type="Int32" />
+          <Property Name="HoTen" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgheNghiep" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="QuanHeChuHo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ConSong" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="tb_ChuHo" Relationship="Self.FK__tb_HoGiaD__IDChu__4CA06362" FromRole="tb_HoGiaDinh" ToRole="tb_ChuHo" />
+        </EntityType>
+        <EntityType Name="tb_KhuPho">
+          <Key>
+            <PropertyRef Name="IDKhuPho" />
+          </Key>
+          <Property Name="IDKhuPho" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPhuongXa" Type="Int32" />
+          <Property Name="TenKhuPho" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DanSo" Type="Int32" />
+          <Property Name="DiaChiTruSoHanhChinh" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ThongTinLienHe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="tb_CSKV" Relationship="Self.FK__tb_CSKV__IDKhuPh__44FF419A" FromRole="tb_KhuPho" ToRole="tb_CSKV" />
+          <NavigationProperty Name="tb_ChuHo" Relationship="Self.FK__tb_ChuHo__IDKhuP__48CFD27E" FromRole="tb_KhuPho" ToRole="tb_ChuHo" />
+          <NavigationProperty Name="tb_PhuongXa" Relationship="Self.FK__tb_KhuPho__IDPhu__3D5E1FD2" FromRole="tb_KhuPho" ToRole="tb_PhuongXa" />
+          <NavigationProperty Name="tb_ToTruongKhuPho" Relationship="Self.FK__tb_ToTruo__IDKhu__412EB0B6" FromRole="tb_KhuPho" ToRole="tb_ToTruongKhuPho" />
+        </EntityType>
+        <EntityType Name="tb_PhuongXa">
+          <Key>
+            <PropertyRef Name="IDPhuongXa" />
+          </Key>
+          <Property Name="IDPhuongXa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDQuan" Type="Int32" />
+          <Property Name="TenPhuong" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DanSo" Type="Int32" />
+          <Property Name="DienTich" Type="Double" />
+          <Property Name="DiaChiTruSoHanhChinh" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ThongTinLienHe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="tb_KhuPho" Relationship="Self.FK__tb_KhuPho__IDPhu__3D5E1FD2" FromRole="tb_PhuongXa" ToRole="tb_KhuPho" />
+          <NavigationProperty Name="tb_Quan" Relationship="Self.FK__tb_Phuong__IDQua__398D8EEE" FromRole="tb_PhuongXa" ToRole="tb_Quan" />
+        </EntityType>
+        <EntityType Name="tb_Quan">
+          <Key>
+            <PropertyRef Name="IDQuan" />
+          </Key>
+          <Property Name="IDQuan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenQuan" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ThanhPho_Tinh" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DanSo" Type="Int32" />
+          <Property Name="DienTich" Type="Double" />
+          <Property Name="DiaChiKhuPhoHanhChinh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ThongTinLienHe" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="tb_PhuongXa" Relationship="Self.FK__tb_Phuong__IDQua__398D8EEE" FromRole="tb_Quan" ToRole="tb_PhuongXa" />
+        </EntityType>
+        <EntityType Name="tb_ToTruongKhuPho">
+          <Key>
+            <PropertyRef Name="IDToTruong" />
+          </Key>
+          <Property Name="IDToTruong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDKhuPho" Type="Int32" />
+          <Property Name="TenToTruong" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChiCuTru" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgayBatDau" Type="DateTime" Precision="0" />
+          <Property Name="TrangThai" Type="Boolean" />
+          <Property Name="ThongTinLienHe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="tb_KhuPho" Relationship="Self.FK__tb_ToTruo__IDKhu__412EB0B6" FromRole="tb_ToTruongKhuPho" ToRole="tb_KhuPho" />
+        </EntityType>
+        <Association Name="FK__tb_CSKV__IDKhuPh__44FF419A">
+          <End Role="tb_KhuPho" Type="Self.tb_KhuPho" Multiplicity="0..1" />
+          <End Role="tb_CSKV" Type="Self.tb_CSKV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_KhuPho">
+              <PropertyRef Name="IDKhuPho" />
+            </Principal>
+            <Dependent Role="tb_CSKV">
+              <PropertyRef Name="IDKhuPho" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_ChuHo__IDKhuP__48CFD27E">
+          <End Role="tb_KhuPho" Type="Self.tb_KhuPho" Multiplicity="0..1" />
+          <End Role="tb_ChuHo" Type="Self.tb_ChuHo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_KhuPho">
+              <PropertyRef Name="IDKhuPho" />
+            </Principal>
+            <Dependent Role="tb_ChuHo">
+              <PropertyRef Name="IDKhuPho" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_HoGiaD__IDChu__4CA06362">
+          <End Role="tb_ChuHo" Type="Self.tb_ChuHo" Multiplicity="0..1" />
+          <End Role="tb_HoGiaDinh" Type="Self.tb_HoGiaDinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_ChuHo">
+              <PropertyRef Name="IDChuHo" />
+            </Principal>
+            <Dependent Role="tb_HoGiaDinh">
+              <PropertyRef Name="IDChuHo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_KhuPho__IDPhu__3D5E1FD2">
+          <End Role="tb_PhuongXa" Type="Self.tb_PhuongXa" Multiplicity="0..1" />
+          <End Role="tb_KhuPho" Type="Self.tb_KhuPho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_PhuongXa">
+              <PropertyRef Name="IDPhuongXa" />
+            </Principal>
+            <Dependent Role="tb_KhuPho">
+              <PropertyRef Name="IDPhuongXa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_ToTruo__IDKhu__412EB0B6">
+          <End Role="tb_KhuPho" Type="Self.tb_KhuPho" Multiplicity="0..1" />
+          <End Role="tb_ToTruongKhuPho" Type="Self.tb_ToTruongKhuPho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_KhuPho">
+              <PropertyRef Name="IDKhuPho" />
+            </Principal>
+            <Dependent Role="tb_ToTruongKhuPho">
+              <PropertyRef Name="IDKhuPho" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Phuong__IDQua__398D8EEE">
+          <End Role="tb_Quan" Type="Self.tb_Quan" Multiplicity="0..1" />
+          <End Role="tb_PhuongXa" Type="Self.tb_PhuongXa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Quan">
+              <PropertyRef Name="IDQuan" />
+            </Principal>
+            <Dependent Role="tb_PhuongXa">
+              <PropertyRef Name="IDQuan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuanLyNhanKhauEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_CSKV" EntityType="Self.tb_CSKV" />
+          <EntitySet Name="tb_ChuHo" EntityType="Self.tb_ChuHo" />
+          <EntitySet Name="tb_HoGiaDinh" EntityType="Self.tb_HoGiaDinh" />
+          <EntitySet Name="tb_KhuPho" EntityType="Self.tb_KhuPho" />
+          <EntitySet Name="tb_PhuongXa" EntityType="Self.tb_PhuongXa" />
+          <EntitySet Name="tb_Quan" EntityType="Self.tb_Quan" />
+          <EntitySet Name="tb_ToTruongKhuPho" EntityType="Self.tb_ToTruongKhuPho" />
+          <AssociationSet Name="FK__tb_CSKV__IDKhuPh__44FF419A" Association="Self.FK__tb_CSKV__IDKhuPh__44FF419A">
+            <End Role="tb_KhuPho" EntitySet="tb_KhuPho" />
+            <End Role="tb_CSKV" EntitySet="tb_CSKV" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_ChuHo__IDKhuP__48CFD27E" Association="Self.FK__tb_ChuHo__IDKhuP__48CFD27E">
+            <End Role="tb_KhuPho" EntitySet="tb_KhuPho" />
+            <End Role="tb_ChuHo" EntitySet="tb_ChuHo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_HoGiaD__IDChu__4CA06362" Association="Self.FK__tb_HoGiaD__IDChu__4CA06362">
+            <End Role="tb_ChuHo" EntitySet="tb_ChuHo" />
+            <End Role="tb_HoGiaDinh" EntitySet="tb_HoGiaDinh" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_KhuPho__IDPhu__3D5E1FD2" Association="Self.FK__tb_KhuPho__IDPhu__3D5E1FD2">
+            <End Role="tb_PhuongXa" EntitySet="tb_PhuongXa" />
+            <End Role="tb_KhuPho" EntitySet="tb_KhuPho" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_ToTruo__IDKhu__412EB0B6" Association="Self.FK__tb_ToTruo__IDKhu__412EB0B6">
+            <End Role="tb_KhuPho" EntitySet="tb_KhuPho" />
+            <End Role="tb_ToTruongKhuPho" EntitySet="tb_ToTruongKhuPho" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Phuong__IDQua__398D8EEE" Association="Self.FK__tb_Phuong__IDQua__398D8EEE">
+            <End Role="tb_Quan" EntitySet="tb_Quan" />
+            <End Role="tb_PhuongXa" EntitySet="tb_PhuongXa" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ChinhSuaChuHo">
+            <Parameter Name="IDChuHo" Mode="In" Type="Int32" />
+            <Parameter Name="IDKhuPho" Mode="In" Type="Int32" />
+            <Parameter Name="HoTenChuHo" Mode="In" Type="String" />
+            <Parameter Name="DiaChi" Mode="In" Type="String" />
+            <Parameter Name="ThongTinLienHe" Mode="In" Type="String" />
+            <Parameter Name="ConSong" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ChinhSuaCSKV">
+            <Parameter Name="IDCSKV" Mode="In" Type="Int32" />
+            <Parameter Name="IDKhuPho" Mode="In" Type="Int32" />
+            <Parameter Name="HoTen" Mode="In" Type="String" />
+            <Parameter Name="ChucVu" Mode="In" Type="String" />
+            <Parameter Name="ThongTinLienHe" Mode="In" Type="String" />
+            <Parameter Name="NgayThamGiaCongTac" Mode="In" Type="DateTime" />
+            <Parameter Name="TrangThai" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ChinhSuaHoGiaDinh">
+            <Parameter Name="IDHoGiaDinh" Mode="In" Type="Int32" />
+            <Parameter Name="IDChuHo" Mode="In" Type="Int32" />
+            <Parameter Name="HoTen" Mode="In" Type="String" />
+            <Parameter Name="NgheNghiep" Mode="In" Type="String" />
+            <Parameter Name="GioiTinh" Mode="In" Type="String" />
+            <Parameter Name="QuanHeChuHo" Mode="In" Type="String" />
+            <Parameter Name="ConSong" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ChinhSuaKhuPho">
+            <Parameter Name="IDKhuPho" Mode="In" Type="Int32" />
+            <Parameter Name="IDPhuongXa" Mode="In" Type="Int32" />
+            <Parameter Name="TenKhuPho" Mode="In" Type="String" />
+            <Parameter Name="DanSo" Mode="In" Type="Int32" />
+            <Parameter Name="DiaChiTruSoHanhChinh" Mode="In" Type="String" />
+            <Parameter Name="ThongTinLienHe" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ChinhSuaPhuongXa">
+            <Parameter Name="IDPhuongXa" Mode="In" Type="Int32" />
+            <Parameter Name="IDQuan" Mode="In" Type="Int32" />
+            <Parameter Name="TenPhuong" Mode="In" Type="String" />
+            <Parameter Name="DanSo" Mode="In" Type="Int32" />
+            <Parameter Name="DienTich" Mode="In" Type="Double" />
+            <Parameter Name="DiaChiTruSoHanhChinh" Mode="In" Type="String" />
+            <Parameter Name="ThongTinLienHe" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ChinhSuaQuan">
+            <Parameter Name="IDQuan" Mode="In" Type="Int32" />
+            <Parameter Name="TenQuan" Mode="In" Type="String" />
+            <Parameter Name="ThanhPho_Tinh" Mode="In" Type="String" />
+            <Parameter Name="DanSo" Mode="In" Type="Int32" />
+            <Parameter Name="DienTich" Mode="In" Type="Double" />
+            <Parameter Name="DiaChiKhuPhoHanhChinh" Mode="In" Type="String" />
+            <Parameter Name="ThongTinLienHe" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ChinhSuaToTruongKhuPho">
+            <Parameter Name="IDToTruong" Mode="In" Type="Int32" />
+            <Parameter Name="IDKhuPho" Mode="In" Type="Int32" />
+            <Parameter Name="TenToTruong" Mode="In" Type="String" />
+            <Parameter Name="NgaySinh" Mode="In" Type="DateTime" />
+            <Parameter Name="GioiTinh" Mode="In" Type="String" />
+            <Parameter Name="DiaChiCuTru" Mode="In" Type="String" />
+            <Parameter Name="NgayBatDau" Mode="In" Type="DateTime" />
+            <Parameter Name="TrangThai" Mode="In" Type="Boolean" />
+            <Parameter Name="ThongTinLienHe" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(QuanLyNhanKhauModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(QuanLyNhanKhauModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemChuHo">
+            <Parameter Name="IDKhuPho" Mode="In" Type="Int32" />
+            <Parameter Name="HoTenChuHo" Mode="In" Type="String" />
+            <Parameter Name="DiaChi" Mode="In" Type="String" />
+            <Parameter Name="ThongTinLienHe" Mode="In" Type="String" />
+            <Parameter Name="ConSong" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemCSKV">
+            <Parameter Name="IDKhuPho" Mode="In" Type="Int32" />
+            <Parameter Name="HoTen" Mode="In" Type="String" />
+            <Parameter Name="ChucVu" Mode="In" Type="String" />
+            <Parameter Name="ThongTinLienHe" Mode="In" Type="String" />
+            <Parameter Name="NgayThamGiaCongTac" Mode="In" Type="DateTime" />
+            <Parameter Name="TrangThai" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemHoGiaDinh">
+            <Parameter Name="IDChuHo" Mode="In" Type="Int32" />
+            <Parameter Name="HoTen" Mode="In" Type="String" />
+            <Parameter Name="NgheNghiep" Mode="In" Type="String" />
+            <Parameter Name="GioiTinh" Mode="In" Type="String" />
+            <Parameter Name="QuanHeChuHo" Mode="In" Type="String" />
+            <Parameter Name="ConSong" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemKhuPho">
+            <Parameter Name="IDPhuongXa" Mode="In" Type="Int32" />
+            <Parameter Name="TenKhuPho" Mode="In" Type="String" />
+            <Parameter Name="DanSo" Mode="In" Type="Int32" />
+            <Parameter Name="DiaChiTruSoHanhChinh" Mode="In" Type="String" />
+            <Parameter Name="ThongTinLienHe" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemPhuongXa">
+            <Parameter Name="IDQuan" Mode="In" Type="Int32" />
+            <Parameter Name="TenPhuong" Mode="In" Type="String" />
+            <Parameter Name="DanSo" Mode="In" Type="Int32" />
+            <Parameter Name="DienTich" Mode="In" Type="Double" />
+            <Parameter Name="DiaChiTruSoHanhChinh" Mode="In" Type="String" />
+            <Parameter Name="ThongTinLienHe" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemQuan">
+            <Parameter Name="TenQuan" Mode="In" Type="String" />
+            <Parameter Name="ThanhPho_Tinh" Mode="In" Type="String" />
+            <Parameter Name="DanSo" Mode="In" Type="Int32" />
+            <Parameter Name="DienTich" Mode="In" Type="Double" />
+            <Parameter Name="DiaChiKhuPhoHanhChinh" Mode="In" Type="String" />
+            <Parameter Name="ThongTinLienHe" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemToTruongKhuPho">
+            <Parameter Name="IDKhuPho" Mode="In" Type="Int32" />
+            <Parameter Name="TenToTruong" Mode="In" Type="String" />
+            <Parameter Name="NgaySinh" Mode="In" Type="DateTime" />
+            <Parameter Name="GioiTinh" Mode="In" Type="String" />
+            <Parameter Name="DiaChiCuTru" Mode="In" Type="String" />
+            <Parameter Name="NgayBatDau" Mode="In" Type="DateTime" />
+            <Parameter Name="TrangThai" Mode="In" Type="Boolean" />
+            <Parameter Name="ThongTinLienHe" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="sp_XoaChuHo">
+            <Parameter Name="IDChuHo" Mode="In" Type="Int32" />
+            <Parameter Name="IsDelete" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_XoaCSKV">
+            <Parameter Name="IDCSKV" Mode="In" Type="Int32" />
+            <Parameter Name="IsDelete" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_XoaHoGiaDinh">
+            <Parameter Name="IDHoGiaDinh" Mode="In" Type="Int32" />
+            <Parameter Name="IsDelete" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_XoaKhuPho">
+            <Parameter Name="IDKhuPho" Mode="In" Type="Int32" />
+            <Parameter Name="IsDelete" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_XoaPhuongXa">
+            <Parameter Name="IDPhuongXa" Mode="In" Type="Int32" />
+            <Parameter Name="IsDelete" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_XoaQuan">
+            <Parameter Name="IDQuan" Mode="In" Type="Int32" />
+            <Parameter Name="IsDelete" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_XoaToTruongKhuPho">
+            <Parameter Name="IDToTruong" Mode="In" Type="Int32" />
+            <Parameter Name="IsDelete" Mode="In" Type="Boolean" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QuanLyNhanKhauModelStoreContainer" CdmEntityContainer="QuanLyNhanKhauEntities">
+          <EntitySetMapping Name="tb_CSKV">
+            <EntityTypeMapping TypeName="QuanLyNhanKhauModel.tb_CSKV">
+              <MappingFragment StoreEntitySet="tb_CSKV">
+                <ScalarProperty Name="IDCSKV" ColumnName="IDCSKV" />
+                <ScalarProperty Name="IDKhuPho" ColumnName="IDKhuPho" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+                <ScalarProperty Name="ThongTinLienHe" ColumnName="ThongTinLienHe" />
+                <ScalarProperty Name="NgayThamGiaCongTac" ColumnName="NgayThamGiaCongTac" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_ChuHo">
+            <EntityTypeMapping TypeName="QuanLyNhanKhauModel.tb_ChuHo">
+              <MappingFragment StoreEntitySet="tb_ChuHo">
+                <ScalarProperty Name="IDChuHo" ColumnName="IDChuHo" />
+                <ScalarProperty Name="IDKhuPho" ColumnName="IDKhuPho" />
+                <ScalarProperty Name="HoTenChuHo" ColumnName="HoTenChuHo" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="ThongTinLienHe" ColumnName="ThongTinLienHe" />
+                <ScalarProperty Name="ConSong" ColumnName="ConSong" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_HoGiaDinh">
+            <EntityTypeMapping TypeName="QuanLyNhanKhauModel.tb_HoGiaDinh">
+              <MappingFragment StoreEntitySet="tb_HoGiaDinh">
+                <ScalarProperty Name="IDHoGiaDinh" ColumnName="IDHoGiaDinh" />
+                <ScalarProperty Name="IDChuHo" ColumnName="IDChuHo" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="NgheNghiep" ColumnName="NgheNghiep" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="QuanHeChuHo" ColumnName="QuanHeChuHo" />
+                <ScalarProperty Name="ConSong" ColumnName="ConSong" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_KhuPho">
+            <EntityTypeMapping TypeName="QuanLyNhanKhauModel.tb_KhuPho">
+              <MappingFragment StoreEntitySet="tb_KhuPho">
+                <ScalarProperty Name="IDKhuPho" ColumnName="IDKhuPho" />
+                <ScalarProperty Name="IDPhuongXa" ColumnName="IDPhuongXa" />
+                <ScalarProperty Name="TenKhuPho" ColumnName="TenKhuPho" />
+                <ScalarProperty Name="DanSo" ColumnName="DanSo" />
+                <ScalarProperty Name="DiaChiTruSoHanhChinh" ColumnName="DiaChiTruSoHanhChinh" />
+                <ScalarProperty Name="ThongTinLienHe" ColumnName="ThongTinLienHe" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_PhuongXa">
+            <EntityTypeMapping TypeName="QuanLyNhanKhauModel.tb_PhuongXa">
+              <MappingFragment StoreEntitySet="tb_PhuongXa">
+                <ScalarProperty Name="IDPhuongXa" ColumnName="IDPhuongXa" />
+                <ScalarProperty Name="IDQuan" ColumnName="IDQuan" />
+                <ScalarProperty Name="TenPhuong" ColumnName="TenPhuong" />
+                <ScalarProperty Name="DanSo" ColumnName="DanSo" />
+                <ScalarProperty Name="DienTich" ColumnName="DienTich" />
+                <ScalarProperty Name="DiaChiTruSoHanhChinh" ColumnName="DiaChiTruSoHanhChinh" />
+                <ScalarProperty Name="ThongTinLienHe" ColumnName="ThongTinLienHe" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Quan">
+            <EntityTypeMapping TypeName="QuanLyNhanKhauModel.tb_Quan">
+              <MappingFragment StoreEntitySet="tb_Quan">
+                <ScalarProperty Name="IDQuan" ColumnName="IDQuan" />
+                <ScalarProperty Name="TenQuan" ColumnName="TenQuan" />
+                <ScalarProperty Name="ThanhPho_Tinh" ColumnName="ThanhPho_Tinh" />
+                <ScalarProperty Name="DanSo" ColumnName="DanSo" />
+                <ScalarProperty Name="DienTich" ColumnName="DienTich" />
+                <ScalarProperty Name="DiaChiKhuPhoHanhChinh" ColumnName="DiaChiKhuPhoHanhChinh" />
+                <ScalarProperty Name="ThongTinLienHe" ColumnName="ThongTinLienHe" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_ToTruongKhuPho">
+            <EntityTypeMapping TypeName="QuanLyNhanKhauModel.tb_ToTruongKhuPho">
+              <MappingFragment StoreEntitySet="tb_ToTruongKhuPho">
+                <ScalarProperty Name="IDToTruong" ColumnName="IDToTruong" />
+                <ScalarProperty Name="IDKhuPho" ColumnName="IDKhuPho" />
+                <ScalarProperty Name="TenToTruong" ColumnName="TenToTruong" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="DiaChiCuTru" ColumnName="DiaChiCuTru" />
+                <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="ThongTinLienHe" ColumnName="ThongTinLienHe" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="QuanLyNhanKhauModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_ChinhSuaChuHo" FunctionName="QuanLyNhanKhauModel.Store.sp_ChinhSuaChuHo" />
+          <FunctionImportMapping FunctionImportName="sp_ChinhSuaCSKV" FunctionName="QuanLyNhanKhauModel.Store.sp_ChinhSuaCSKV" />
+          <FunctionImportMapping FunctionImportName="sp_ChinhSuaHoGiaDinh" FunctionName="QuanLyNhanKhauModel.Store.sp_ChinhSuaHoGiaDinh" />
+          <FunctionImportMapping FunctionImportName="sp_ChinhSuaKhuPho" FunctionName="QuanLyNhanKhauModel.Store.sp_ChinhSuaKhuPho" />
+          <FunctionImportMapping FunctionImportName="sp_ChinhSuaPhuongXa" FunctionName="QuanLyNhanKhauModel.Store.sp_ChinhSuaPhuongXa" />
+          <FunctionImportMapping FunctionImportName="sp_ChinhSuaQuan" FunctionName="QuanLyNhanKhauModel.Store.sp_ChinhSuaQuan" />
+          <FunctionImportMapping FunctionImportName="sp_ChinhSuaToTruongKhuPho" FunctionName="QuanLyNhanKhauModel.Store.sp_ChinhSuaToTruongKhuPho" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="QuanLyNhanKhauModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="QuanLyNhanKhauModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="QuanLyNhanKhauModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QuanLyNhanKhauModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="QuanLyNhanKhauModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QuanLyNhanKhauModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="QuanLyNhanKhauModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_ThemChuHo" FunctionName="QuanLyNhanKhauModel.Store.sp_ThemChuHo" />
+          <FunctionImportMapping FunctionImportName="sp_ThemCSKV" FunctionName="QuanLyNhanKhauModel.Store.sp_ThemCSKV" />
+          <FunctionImportMapping FunctionImportName="sp_ThemHoGiaDinh" FunctionName="QuanLyNhanKhauModel.Store.sp_ThemHoGiaDinh" />
+          <FunctionImportMapping FunctionImportName="sp_ThemKhuPho" FunctionName="QuanLyNhanKhauModel.Store.sp_ThemKhuPho" />
+          <FunctionImportMapping FunctionImportName="sp_ThemPhuongXa" FunctionName="QuanLyNhanKhauModel.Store.sp_ThemPhuongXa" />
+          <FunctionImportMapping FunctionImportName="sp_ThemQuan" FunctionName="QuanLyNhanKhauModel.Store.sp_ThemQuan" />
+          <FunctionImportMapping FunctionImportName="sp_ThemToTruongKhuPho" FunctionName="QuanLyNhanKhauModel.Store.sp_ThemToTruongKhuPho" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="QuanLyNhanKhauModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_XoaChuHo" FunctionName="QuanLyNhanKhauModel.Store.sp_XoaChuHo" />
+          <FunctionImportMapping FunctionImportName="sp_XoaCSKV" FunctionName="QuanLyNhanKhauModel.Store.sp_XoaCSKV" />
+          <FunctionImportMapping FunctionImportName="sp_XoaHoGiaDinh" FunctionName="QuanLyNhanKhauModel.Store.sp_XoaHoGiaDinh" />
+          <FunctionImportMapping FunctionImportName="sp_XoaKhuPho" FunctionName="QuanLyNhanKhauModel.Store.sp_XoaKhuPho" />
+          <FunctionImportMapping FunctionImportName="sp_XoaPhuongXa" FunctionName="QuanLyNhanKhauModel.Store.sp_XoaPhuongXa" />
+          <FunctionImportMapping FunctionImportName="sp_XoaQuan" FunctionName="QuanLyNhanKhauModel.Store.sp_XoaQuan" />
+          <FunctionImportMapping FunctionImportName="sp_XoaToTruongKhuPho" FunctionName="QuanLyNhanKhauModel.Store.sp_XoaToTruongKhuPho" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
