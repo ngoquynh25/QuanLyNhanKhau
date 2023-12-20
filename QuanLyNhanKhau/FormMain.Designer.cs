@@ -43,6 +43,8 @@ namespace QuanLyNhanKhau
             this.controlHoGiaDinh = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.controlChuHo = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.controlHGD = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.controlHeThong = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.controlBackUp = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
@@ -67,7 +69,8 @@ namespace QuanLyNhanKhau
             this.accordionControl1.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.controlDiaBanHanhChinh,
             this.controlKhuPho,
-            this.controlHoGiaDinh});
+            this.controlHoGiaDinh,
+            this.controlHeThong});
             this.accordionControl1.Location = new System.Drawing.Point(0, 39);
             this.accordionControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.accordionControl1.Name = "accordionControl1";
@@ -167,6 +170,22 @@ namespace QuanLyNhanKhau
             this.controlHGD.Text = "Danh Sách Hộ Gia Đình";
             this.controlHGD.Click += new System.EventHandler(this.controlHGD_Click);
             // 
+            // controlHeThong
+            // 
+            this.controlHeThong.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.controlBackUp});
+            this.controlHeThong.Expanded = true;
+            this.controlHeThong.Name = "controlHeThong";
+            this.controlHeThong.Text = "Hệ Thống";
+            // 
+            // controlBackUp
+            // 
+            this.controlBackUp.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("controlBackUp.ImageOptions.Image")));
+            this.controlBackUp.Name = "controlBackUp";
+            this.controlBackUp.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.controlBackUp.Text = "BackUp Dữ Liệu";
+            this.controlBackUp.Click += new System.EventHandler(this.controlBackUp_Click);
+            // 
             // fluentDesignFormControl1
             // 
             this.fluentDesignFormControl1.FluentDesignForm = this;
@@ -222,6 +241,8 @@ namespace QuanLyNhanKhau
         private DevExpress.XtraBars.Navigation.AccordionControlElement controlHoGiaDinh;
         private DevExpress.XtraBars.Navigation.AccordionControlElement controlChuHo;
         private DevExpress.XtraBars.Navigation.AccordionControlElement controlHGD;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement controlHeThong;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement controlBackUp;
     }
 }
 

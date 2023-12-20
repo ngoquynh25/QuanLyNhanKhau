@@ -154,6 +154,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TTTDPDTO.xsd</DependentUpon>
     </Compile>
+    <Compile Include="UI\UCBackUp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UCBackUp.Designer.cs">
+      <DependentUpon>UCBackUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UCChuHo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -240,6 +246,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\UCBackUp.resx">
+      <DependentUpon>UCBackUp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\UCChuHo.resx">
       <DependentUpon>UCChuHo.cs</DependentUpon>
     </EmbeddedResource>

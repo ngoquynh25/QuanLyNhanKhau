@@ -25,6 +25,7 @@ namespace QuanLyNhanKhau
         UCCSKV uCCSKV;
         UCChuHo uCChuHo;
         UCHoGiaDinh uCHoGiaDinh;
+        UCBackUp uCBackUp;
 
         private void controlQuan_Click(object sender, EventArgs e)
         {
@@ -123,6 +124,19 @@ namespace QuanLyNhanKhau
             }
             else
                 uCHoGiaDinh.BringToFront();
+        }
+
+        private void controlBackUp_Click(object sender, EventArgs e)
+        {
+            if (uCBackUp == null)
+            {
+                uCBackUp = new UCBackUp();
+                uCBackUp.Dock = DockStyle.Fill;
+                mainContainer.Controls.Add(uCBackUp);
+                uCBackUp.BringToFront();
+            }
+            else
+                uCBackUp.BringToFront();
         }
     }
 }
