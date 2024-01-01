@@ -259,5 +259,10 @@ namespace QuanLyNhanKhau.UI
                 MessageBox.Show("Phím Enter được nhấn trong UserControl");
             }
         }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            loaddata();
+        }
     }
 }

@@ -245,5 +245,10 @@ namespace QuanLyNhanKhau.UI
             fin.crystalReportViewer1.ReportSource = baocao;
             fin.ShowDialog();
         }
+
+        private void btnlammoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            loaddata();
+        }
     }
 }

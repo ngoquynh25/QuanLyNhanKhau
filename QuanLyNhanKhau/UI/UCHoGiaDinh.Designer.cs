@@ -60,11 +60,15 @@ namespace QuanLyNhanKhau.UI
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.slkChuHo = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colIDChuHo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.HoTenChuHo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtnghenghiep = new System.Windows.Forms.TextBox();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.cbgioitinh = new System.Windows.Forms.ComboBox();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.cbChuHo = new System.Windows.Forms.ComboBox();
+            this.btnLammoi = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvHoGiaDinh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcHoGiaDinh)).BeginInit();
@@ -72,6 +76,8 @@ namespace QuanLyNhanKhau.UI
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.slkChuHo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             this.SuspendLayout();
             // 
             // bar1
@@ -106,9 +112,10 @@ namespace QuanLyNhanKhau.UI
             this.btnThoat,
             this.btnLuu,
             this.btnHuy,
-            this.btnIn});
+            this.btnIn,
+            this.btnLammoi});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 8;
+            this.barManager1.MaxItemId = 9;
             // 
             // bar2
             // 
@@ -122,7 +129,8 @@ namespace QuanLyNhanKhau.UI
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnIn, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnLuu, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnHuy, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnHuy, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnLammoi, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -374,12 +382,12 @@ namespace QuanLyNhanKhau.UI
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.slkChuHo);
             this.splitContainer1.Panel1.Controls.Add(this.txtnghenghiep);
             this.splitContainer1.Panel1.Controls.Add(this.labelControl3);
             this.splitContainer1.Panel1.Controls.Add(this.cbgioitinh);
             this.splitContainer1.Panel1.Controls.Add(this.labelControl6);
             this.splitContainer1.Panel1.Controls.Add(this.checktrangthai);
-            this.splitContainer1.Panel1.Controls.Add(this.cbChuHo);
             this.splitContainer1.Panel1.Controls.Add(this.txtquanhechuho);
             this.splitContainer1.Panel1.Controls.Add(this.labelControl5);
             this.splitContainer1.Panel1.Controls.Add(this.txthoten);
@@ -392,6 +400,45 @@ namespace QuanLyNhanKhau.UI
             this.splitContainer1.Size = new System.Drawing.Size(1382, 776);
             this.splitContainer1.SplitterDistance = 192;
             this.splitContainer1.TabIndex = 13;
+            // 
+            // slkChuHo
+            // 
+            this.slkChuHo.Location = new System.Drawing.Point(225, 85);
+            this.slkChuHo.MenuManager = this.barManager1;
+            this.slkChuHo.Name = "slkChuHo";
+            this.slkChuHo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.slkChuHo.Properties.Appearance.Options.UseFont = true;
+            this.slkChuHo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.slkChuHo.Properties.PopupView = this.searchLookUpEdit1View;
+            this.slkChuHo.Size = new System.Drawing.Size(411, 28);
+            this.slkChuHo.TabIndex = 23;
+            // 
+            // searchLookUpEdit1View
+            // 
+            this.searchLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colIDChuHo,
+            this.HoTenChuHo});
+            this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
+            this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // colIDChuHo
+            // 
+            this.colIDChuHo.Caption = "ID Chủ Hộ";
+            this.colIDChuHo.FieldName = "IDChuHo";
+            this.colIDChuHo.Name = "colIDChuHo";
+            this.colIDChuHo.Visible = true;
+            this.colIDChuHo.VisibleIndex = 0;
+            // 
+            // HoTenChuHo
+            // 
+            this.HoTenChuHo.Caption = "Tên Chủ Hộ";
+            this.HoTenChuHo.FieldName = "HoTenChuHo";
+            this.HoTenChuHo.Name = "HoTenChuHo";
+            this.HoTenChuHo.Visible = true;
+            this.HoTenChuHo.VisibleIndex = 1;
             // 
             // txtnghenghiep
             // 
@@ -431,15 +478,14 @@ namespace QuanLyNhanKhau.UI
             this.labelControl6.TabIndex = 19;
             this.labelControl6.Text = "Giới Tính:";
             // 
-            // cbChuHo
+            // btnLammoi
             // 
-            this.cbChuHo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbChuHo.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.cbChuHo.FormattingEnabled = true;
-            this.cbChuHo.Location = new System.Drawing.Point(225, 85);
-            this.cbChuHo.Name = "cbChuHo";
-            this.cbChuHo.Size = new System.Drawing.Size(411, 29);
-            this.cbChuHo.TabIndex = 12;
+            this.btnLammoi.Caption = "Làm mới";
+            this.btnLammoi.Id = 8;
+            this.btnLammoi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.btnLammoi.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.btnLammoi.Name = "btnLammoi";
+            this.btnLammoi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLammoi_ItemClick);
             // 
             // UCHoGiaDinh
             // 
@@ -461,6 +507,8 @@ namespace QuanLyNhanKhau.UI
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.slkChuHo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -483,7 +531,6 @@ namespace QuanLyNhanKhau.UI
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.CheckBox checktrangthai;
-        private System.Windows.Forms.ComboBox cbChuHo;
         private System.Windows.Forms.TextBox txtquanhechuho;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private System.Windows.Forms.TextBox txthoten;
@@ -502,5 +549,10 @@ namespace QuanLyNhanKhau.UI
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private System.Windows.Forms.ComboBox cbgioitinh;
         private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.SearchLookUpEdit slkChuHo;
+        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
+        private DevExpress.XtraGrid.Columns.GridColumn colIDChuHo;
+        private DevExpress.XtraGrid.Columns.GridColumn HoTenChuHo;
+        private DevExpress.XtraBars.BarButtonItem btnLammoi;
     }
 }

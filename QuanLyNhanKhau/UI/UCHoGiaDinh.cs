@@ -26,11 +26,18 @@ namespace QuanLyNhanKhau.UI
 
         #region Method
 
+        void loadchuho()
+        {
+            slkChuHo.Properties.DataSource = _chuHoBUS.getListFull();
+            slkChuHo.Properties.ValueMember = "IDChuHo";
+            slkChuHo.Properties.DisplayMember = "HoTenChuHo";
+        }
+
         void loadcombox()
         {
-            cbChuHo.DataSource = _chuHoBUS.getListFullCB();
-            cbChuHo.DisplayMember = "IDChuHo";
-            cbChuHo.ValueMember = "IDChuHo";
+            //cbChuHo.DataSource = _chuHoBUS.getListFullCB();
+            //cbChuHo.DisplayMember = "IDChuHo";
+            //cbChuHo.ValueMember = "IDChuHo";
 
             List<KeyValuePair<string, string>> items = new List<KeyValuePair<string, string>>
             {
@@ -58,7 +65,7 @@ namespace QuanLyNhanKhau.UI
             btnXoa.Enabled = kt;
             btnIn.Enabled = kt;
             txthoten.Enabled = !kt;
-            cbChuHo.Enabled = !kt;
+            //cbChuHo.Enabled = !kt;
             cbgioitinh.Enabled = !kt;
             txtquanhechuho.Enabled = !kt;
             txtnghenghiep.Enabled = !kt;
@@ -79,7 +86,8 @@ namespace QuanLyNhanKhau.UI
 
             if (_Them)
             {
-                hogiadinh.IDChuHo = int.Parse(cbChuHo.SelectedValue.ToString());
+                //hogiadinh.IDChuHo = int.Parse(cbChuHo.SelectedValue.ToString());
+                hogiadinh.IDChuHo = int.Parse(slkChuHo.EditValue.ToString());
                 hogiadinh.HoTen = txthoten.Text;
                 hogiadinh.NgheNghiep = txtnghenghiep.Text;
                 hogiadinh.GioiTinh = cbgioitinh.SelectedValue.ToString();
@@ -91,7 +99,7 @@ namespace QuanLyNhanKhau.UI
             {
                 var dt = _hoGiaDinhBUS.getItem(_id);
                 dt.IDHoGiaDinh = _id;
-                dt.IDChuHo = int.Parse(cbChuHo.SelectedValue.ToString());
+                dt.IDChuHo = int.Parse(slkChuHo.EditValue.ToString());
                 dt.HoTen = txthoten.Text;
                 dt.NgheNghiep = txtnghenghiep.Text;
                 dt.GioiTinh = cbgioitinh.SelectedValue.ToString();
@@ -112,6 +120,7 @@ namespace QuanLyNhanKhau.UI
             splitContainer1.Panel1Collapsed = true;
             loadcombox();
             loaddata();
+            loadchuho();
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -219,12 +228,18 @@ namespace QuanLyNhanKhau.UI
         {
             _id = int.Parse(gvHoGiaDinh.GetFocusedRowCellValue("IDHoGiaDinh").ToString());
             var dt = _hoGiaDinhBUS.getItem(_id);
-            cbChuHo.SelectedValue = dt.IDChuHo;
+            //cbChuHo.SelectedValue = dt.IDChuHo;
+            slkChuHo.EditValue = dt.IDChuHo;
             txthoten.Text = dt.HoTen;
             cbgioitinh.SelectedValue = dt.GioiTinh;
             txtnghenghiep.Text = dt.NgheNghiep;
             checktrangthai.Checked = dt.ConSong.Value;
             txtquanhechuho.Text = dt.QuanHeChuHo;
+        }
+
+        private void btnLammoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            loaddata();
         }
     }
 }

@@ -45,6 +45,7 @@ namespace QuanLyNhanKhau
             this.controlHGD = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.controlHeThong = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.controlBackUp = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.controlRestore = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
@@ -173,8 +174,8 @@ namespace QuanLyNhanKhau
             // controlHeThong
             // 
             this.controlHeThong.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.controlBackUp});
-            this.controlHeThong.Expanded = true;
+            this.controlBackUp,
+            this.controlRestore});
             this.controlHeThong.Name = "controlHeThong";
             this.controlHeThong.Text = "Hệ Thống";
             // 
@@ -185,6 +186,14 @@ namespace QuanLyNhanKhau
             this.controlBackUp.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.controlBackUp.Text = "BackUp Dữ Liệu";
             this.controlBackUp.Click += new System.EventHandler(this.controlBackUp_Click);
+            // 
+            // controlRestore
+            // 
+            this.controlRestore.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("controlRestore.ImageOptions.Image")));
+            this.controlRestore.Name = "controlRestore";
+            this.controlRestore.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.controlRestore.Text = "Khôi Phục Dữ Liệu";
+            this.controlRestore.Click += new System.EventHandler(this.controlRestore_Click);
             // 
             // fluentDesignFormControl1
             // 
@@ -243,6 +252,7 @@ namespace QuanLyNhanKhau
         private DevExpress.XtraBars.Navigation.AccordionControlElement controlHGD;
         private DevExpress.XtraBars.Navigation.AccordionControlElement controlHeThong;
         private DevExpress.XtraBars.Navigation.AccordionControlElement controlBackUp;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement controlRestore;
     }
 }
 

@@ -26,6 +26,7 @@ namespace QuanLyNhanKhau
         UCChuHo uCChuHo;
         UCHoGiaDinh uCHoGiaDinh;
         UCBackUp uCBackUp;
+        UCRestore uCRestore;
 
         private void controlQuan_Click(object sender, EventArgs e)
         {
@@ -137,6 +138,19 @@ namespace QuanLyNhanKhau
             }
             else
                 uCBackUp.BringToFront();
+        }
+
+        private void controlRestore_Click(object sender, EventArgs e)
+        {
+            if (uCRestore == null)
+            {
+                uCRestore = new UCRestore();
+                uCRestore.Dock = DockStyle.Fill;
+                mainContainer.Controls.Add(uCRestore);
+                uCRestore.BringToFront();
+            }
+            else
+                uCRestore.BringToFront();
         }
     }
 }

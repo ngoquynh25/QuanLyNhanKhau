@@ -66,6 +66,7 @@ namespace QuanLyNhanKhau.UI
             this.DiaChiTruSoHanhChinh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThongTinLienHe = new DevExpress.XtraGrid.Columns.GridColumn();
             this.bar1 = new DevExpress.XtraBars.Bar();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -153,9 +154,10 @@ namespace QuanLyNhanKhau.UI
             this.btnThoat,
             this.btnLuu,
             this.btnHuy,
-            this.btnIn});
+            this.btnIn,
+            this.barButtonItem1});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 8;
+            this.barManager1.MaxItemId = 9;
             // 
             // bar2
             // 
@@ -169,7 +171,8 @@ namespace QuanLyNhanKhau.UI
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnIn, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnLuu, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnHuy, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnHuy, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem1, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -448,6 +451,15 @@ namespace QuanLyNhanKhau.UI
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.Text = "Tools";
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Làm mới";
+            this.barButtonItem1.Id = 8;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
             // UCKhuPho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -510,5 +522,6 @@ namespace QuanLyNhanKhau.UI
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraGrid.Columns.GridColumn TenPhuong;
         private DevExpress.XtraGrid.Columns.GridColumn TenQuan;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }
